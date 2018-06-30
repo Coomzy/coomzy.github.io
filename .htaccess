@@ -1,9 +1,0 @@
-Options -Indexes
-RewriteEngine On
-RewriteBase /
-
-# Redirect all files not match index.php
-RewriteCond %{REQUEST_URI}  !(development) [NC]
-
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule . index.php [L]
