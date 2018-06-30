@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+	<meta charset='utf-8'/>
+	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="/favicon.ico" type="image/x-icon">
+	<meta name='description' content='Callum Coombes ePortfolio'/>
+	<meta name='keywords' content='cal,callum,coombes,c00mzy,gaming,portfolio,games,develop,create,unity,unreal,indie,play,actionscript,england,gb,britain,uk,software,design,ludum,dare'/>
+	<meta http-equiv="X-UA-Compatible" content="IE=9">
+	<meta http-equiv="X-UA-Compatible" content="IE=9">
+	<title>Callum Coombes - ePortfolio</title>
+	<script src='/js/jquery-min-1.7.1.js'></script>
+	<link rel='stylesheet' href='/css/default.css'>
+	<script>
+		document.createElement('main');
+
+		/**
+		 * Either try and scroll to the preloaded hash, otherwise 
+		 * try location.hash if one is present
+		 */
+		var hash = location.hash;
+
+		document.onreadystatechange = function() {
+			if (document.readyState == 'complete') {
+				RegExp.escape = function(str) {
+					return str.replace(/([\/.?*+^$[\]\\(){}|-])/g, "\\$1");
+				};
+
+				// Make sure all clickable hashes for this page will scroll to the right element
+				$('main > header > menu > li > a, main > header > menu > li > ul > li > a, main > header > menu > li > ul > li > ul > li > a').each(function(index, element) {
+					var href = $(element).attr('href');
+					var regex = new RegExp('^(?:' + RegExp.escape(location.pathname) + ')?(#[\\w_-]+)');
+					var matches = href.match(regex);
+					if (matches) {//$(element).attr('href').indexOf('#') > -1) {
+						$(element).click(function(e) {
+							$('input#menu[type=\'checkbox\']').attr('checked', false);
+							scrollToHash(matches[1]);
+							e.preventDefault();
+							return false;
+						});
+					}
+				});
+
+				/**
+				 * When the page loads with a hash, prevent the window from 
+				 * scrolling past the right position and scroll to the right
+				 * place ourselves
+				 */
+				window.onhashchange = function(e) {
+					scrollToHash(location.hash);
+				}
+
+				$('.project label.brief span').click(function(e) {
+					var parent = $(this).closest('.project');
+					var content = $('#content', parent);
+
+					if ($(content).is('.expanded')) {
+						$(content).removeClass('expanded');
+					} else {
+						$(content).addClass('expanded');
+					}
+					e.stopPropagation();
+					return false;
+				});
+
+				$('footer #top a').click(() => {
+					scrollToHash('#about');
+					e.preventDefault();
+					return false;
+				});
+
+			}
+
+			/**
+			 * When we load, make sure we are in the right place when
+			 * a hash is used (which typically happens on the refresh 
+			 * of the same hash)
+			 */
+			if (hash) {
+				scrollToHash(hash, true);
+			}
+
+		}
+
+		function scrollToHash(hash, reset = false) {
+			// Make sure to only proceed if we have a hash, and we have an element with the hash id
+			if (hash && $(hash).length > 0) {
+				// Only reset the page to the top when called for
+				if (reset) {
+					setTimeout(function() {
+						window.scrollTo(0, 0);
+					}, 1);
+				}
+				// What the fixed element is so that we can scroll to the right height
+				var fixedElement = 'body > main > header';
+				// Finally, animate the scroll to the right position
+				$('html, body').stop().animate({
+					scrollTop: $(hash).offset().top - $(fixedElement).outerHeight()
+				});
+			}
+		}
+	</script>
+	</head>
+	<body>
+		<main>
+
+			<header>
+				<h1>Callum Coombes</h1>
+				<div class='role'>Game Programmer</div>
+				<input type='checkbox' name='menu' id='menu'/>
+				<label id='menu' for='menu'><span class='closed'>Menu</span><span class='open'><i class="fa fa-times" aria-hidden="true"></i></span></label>
+				<menu>
+					<li><a href='/#about'>About Me</a></li>
+					<li>
+						<a href='/#projects'>Projects</a>
+						<ul>
+							<li>
+								<a href='/#professional'>Professional</a>
+								<ul>
+									<li><a href='/#risingstorm2'>Rising Storm 2: Vietnam</a></li>
+								</ul>
+							</li>
+							<li>
+								<a href='/#personal'>Personal</a>
+								<ul>
+									<li><a href='/#battle-arena'>Battle Arena</a></li>
+									<li><a href='/#ue4-dev-launcher'>UE4 Dev Launcher</a></li>
+									<li><a href='/#plex'>PLEX</a></li>
+									<li><a href='/#localizeme'>LocalizeMe</a></li>
+								</ul>
+							</li>
+							<li>
+								<a href='/#university'>University</a>
+								<ul>
+									<li><a href='/#kick-your-astronaut'>Kick Your Astronaut</a></li>
+									<li><a href='/#project-playground'>Project Playground</a></li>
+									<li><a href='/#echo'>Echo</a></li>
+								</ul>
+							</li>
+							<li>
+								<a href='/#gamejams'>Game Jams</a>
+								<ul>
+									<li><a href='/#gj-10'>Superbman - #10</a></li>
+									<li><a href='/#gj-9'>Final Front: Planetary Defence - #9</a></li>
+									<li><a href='/#gj-8'>One Room At A Time - #8</a></li>
+									<li><a href='/#gj-7'>Blowin’ Round The World - #7</a></li>
+									<li><a href='/#gj-6'>Bang Buggys - #6</a></li>
+									<li><a href='/#gj-5'>Tomb Player - #5</a></li>
+									<li><a href='/#gj-4'>Shoot Or Don’t Shoot - #4</a></li>
+									<li><a href='/#gj-3'>Neighbourhood Rampage - #3</a></li>
+									<li><a href='/#gj-2'>A Bug’s Death - #2</a></li>
+									<li><a href='/#gj-1'>Artica - #1</a></li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+					<li><a href='/#resume'>Resume</a></li>
+				</menu>
+			</header>
+
+			<section id='about' style='min-height: inherit !important; padding-bottom: 4em;'>
+				<div id='content'>
+					<h1>About Me</h1>
+					<p>I am a games programmer with a strong interest in multiplayer games, my main interests in a project are <i>gameplay</i>, <i>systems</i> and <i>AI</i>. Alongside practical studio experience, working within a team environment. I’m also an avid game jammer frequently participating in Ludum Dare.</p>
+				</div>
+			</section>
+
+			<section id='projects'>
+				<div id='content'>
+					<h1>Projects</h1>
+					<div id='professional'>
+						<h3>Professional</h3>
+						<div class='project' id='risingstorm2'>
+							<h4>Rising Storm 2: Vietnam</h4>
+							<div class='preview'>
+								<iframe id="_ytid_65725" width="480" height="270" src="https://www.youtube.com/embed/YqyeNcNKxXs?wmode=transparent"></iframe>
+							</div>
+							<div class='info'>
+								<div id='content' class='expanded'>
+									<p class='brief'>Rising Storm 2: Vietnam is Red Orchestra Series' take on Vietnam: 64-player MP matches; 16-player Skirmish; M16, M79, Hueys and Attack Helicopters; the AK, Double-Barrel Shotguns, Toe-Popper Mines, Tripwires, Tunnels and more. Brutal. Authentic. Gritty. Character customization. And napalm in the morning.</p>
+									<p>Worked as a general gameplay programmer ranging from <i>features</i>, <i>achievements</i>, <i>UI</i> and <i>bugs</i>. I worked on the game for the majority of the project and also worked on post release updates for a couple of months adding/changing some minor features and fixing bugs.</p>
+									<ul style='list-style: none; padding: 0; margin-bottom: 1.5em;'>
+										<li><b>My Development Time:</b> June 2015 - Present</li>
+										<li><b>Engine:</b> Unreal Engine 3 (UnrealScript)</li>
+										<li><b>Link:</b> <a href='http://store.steampowered.com/app/418460/Rising_Storm_2_Vietnam/' title='Rising Storm 2: Vietnam on the Steam Store'>http://store.steampowered.com/app/418460/Rising_Storm_2_Vietnam/</a></li>
+									</ul>
+									<!--<label class='brief'><span class='closed'>Read more</span><span class='open'>Collapse</i></span></label>-->
+								</div>
+							</div>
+						</div>
+					</div>
+					<div id='personal'>
+						<h3>Personal</h3>
+						<div class='project' id='battle-arena'>
+							<h4>Battle Arena</h4>
+							<div class='preview'>
+								<iframe id="_ytid_65725" width="480" height="270" src="https://www.youtube.com/embed/Dpkf8oIJq_A?wmode=transparent"></iframe>
+							</div>
+							<div class='info'>
+								<div id='content'>
+									<div class='brief'>Battle Arena is an online multiplayer FPS, where players fight in a series of 1v1s to be the last player standing. I created this project to get more familiar with Unreal Engine 4’s networking, and the engine in general, setting out to create a small FPS game. Although the game’s visuals and sounds were cobbled together with mostly stock assets, the rest of the game was made by me. Supporting both dedicated and listen servers.
+										<ul style='list-style: none; padding: 0; margin-bottom: 1.5em;'>
+											<li><b>My Development Time:</b> July 2017 - September 2017 (2-3 months part time)</li>
+											<li><b>Engine:</b> Unreal Engine 4 (Mostly C++, some Blueprints)</li>
+											<li><b>Link:</b> <a href='https://coomzy.itch.io/battle-arena' title='Play/Download Battle Arena'>https://coomzy.itch.io/battle-arena</a></li>
+										</ul>
+									</div>
+									<!--<label class='brief'><span class='closed'>Read more</span><span class='open'>Collapse</i></span></label>-->
+								</div>
+							</div>
+							<div class='project' style='min-height:540px;' id='ue4-dev-launcher'>
+								<h4>UE4 Dev Launcher</h4>
+								<div class='preview'>
+									<img src='/img/UE4-DL.PNG' width='512' title='Unreal Engine 4 Development Launcher'/>
+								</div>
+								<div class='info'>
+									<div id='content'>
+										<div class='brief'>UE4 Dev Launcher is a tool made while making Battle Arena to launch uncooked games to run multiple clients in “standalone” mode and remove the Play-In-Editor hacks and workarounds. Although it is essentially a glorified batch file (based on the settings you use) it will send the command args to the editor to run in that state. It’s pretty flexible being able to change specific client settings, choosing maps/game modes switching between listen and dedicated servers.
+											<ul style='list-style: none; padding: 0; margin-bottom: 1.5em;'>
+												<li><b>My Development Time:</b> July 2017 (About A Week)</li>
+												<li><b>Tools:</b> Visual Studio Winforms (C#)</li>
+											</ul>
+										</div>
+										<!--<label class='brief'><span class='closed'>Read more</span><span class='open'>Collapse</i></span></label>-->
+									</div>
+								</div>
+							</div>
+							<div class='project' id='plex'>
+								<h4>PLEX</h4>
+								<div class='preview'>
+									<iframe id="_ytid_65725" width="480" height="270" src="https://www.youtube.com/embed/fxkeP7S7nJE?wmode=transparent"></iframe>
+								</div>
+								<div class='info'>
+									<div id='content'>
+										<div class='brief'>PLEX is a basic platforming game with a built in level editor, the project wasn’t really the point of the game but I wanted to have ago at making a level editor. With the games built in level editor you’re able to edit existing levels, build new levels, play the levels you have built. It takes a picture of the level and then exports that into a custom data file that can be loaded in anyone's game (so you can send the file to other people).
+											<ul style='list-style: none; padding: 0; margin-bottom: 1.5em;'>
+												<li><b>My Development Time:</b> A weekend in the summer of 2015</li>
+												<li><b>Engine:</b> Unity (C#)</li>
+											</ul>
+										</div>
+										<!--<label class='brief'><span class='closed'>Read more</span><span class='open'>Collapse</i></span></label>-->
+									</div>
+								</div>
+							</div>
+							<div class='project' id='localizeme'>
+								<h4>LocalizeMe</h4>
+								<div class='preview'><!-- 
+									<iframe id="_ytid_65725" width="480" height="270" src="https://www.youtube.com/embed/fxkeP7S7nJE?wmode=transparent"></iframe> -->
+								</div>
+								<div class='info'>
+									<div id='content'>
+										<div class='brief'>LocalizeMe is a basic plugin for Unity to allow for easy localization, inspired by the Unreal Engine 3 localization system it uses text files to hold the information and at runtime grabs and caches the localized version of the text.
+											<ul style='list-style: none; padding: 0; margin-bottom: 1.5em;'>
+												<li><b>My Development Time:</b> A weekend in the summer of 2015</li>
+												<li><b>Engine:</b> Unity (C#)</li>
+											</ul>
+										</div>
+										<!--<label class='brief'><span class='closed'>Read more</span><span class='open'>Collapse</i></span></label>-->
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div id='university'>
+						<h3>University</h3>
+						<div class='project' id='kick-your-astronaut'>
+							<h4>Kick Your Astronaut</h4>
+							<div class='preview'>
+								<iframe id="_ytid_65725" width="480" height="270" src="https://youtube.com/embed/oIqI9nUAGqo?wmode=transparent"></iframe>
+							</div>
+							<div class='info'>
+								<div id='content'>
+									<div class='brief'>KYA is a Local Multiplayer/Couch Co-Op Brawler made for up to 4 players! Zero gravity physics allow for slapstick violence and comical deaths. This was the final year project where I worked as programmer/designer in a team of 4.
+										<ul style='list-style: none; padding: 0; margin-bottom: 1.5em;'>
+											<li><b>My Development Time:</b> October 2016 - April 2017</li>
+											<li><b>Engine:</b> Unity (C#)</li>
+											<li><b>Link:</b> <a href='https://squirrelsoft-studios.itch.io/kick-your-astronaut' title='Play/Download Kick Your Astronaut'>https://squirrelsoft-studios.itch.io/kick-your-astronaut</a></li>
+										</ul>
+									</div>
+									<!--<label class='brief'><span class='closed'>Read more</span><span class='open'>Collapse</i></span></label>-->
+								</div>
+							</div>
+						</div>
+						<div class='project' id='project-playground'>
+							<h4>Project Playground</h4>
+							<div class='preview'>
+								<iframe id="_ytid_65725" width="480" height="270" src="https://youtube.com/embed/xwNxfkylP8o?wmode=transparent"></iframe>
+							</div>
+							<div class='info'>
+								<div id='content'>
+									<div class='brief'>Project Playground is a <q><i>Goat Simulator</i></q> styled FPS Playground game, where you have been set a series of challenges, 3 minigames and 5 zayne weapons. This was the second year university project where I worked as the programmer and also an designer (mostly weapon design) in a team of 8.
+										<ul style='list-style: none; padding: 0; margin-bottom: 1.5em;'>
+											<li><b>My Development Time:</b> January 2016 - April 2016</li>
+											<li><b>Engine:</b> Unity (C#)</li>
+										</ul>
+									</div>
+									<!--<label class='brief'><span class='closed'>Read more</span><span class='open'>Collapse</i></span></label>-->
+								</div>
+							</div>
+						</div>
+						<div class='project' id='echo'>
+							<h4>Echo</h4>
+							<div class='preview'>
+								<iframe id="_ytid_65725" width="480" height="270" src="https://youtube.com/embed/bsb8eC3sw0A?wmode=transparent"></iframe>
+							</div>
+							<div class='info'>
+								<div id='content'>
+									<div class='brief'>Echo is a 3D point and click game, where you play as a blind girl who sees through echolocation. This was the first year university project where I worked as the programmer in a team of 8.
+										<ul style='list-style: none; padding: 0; margin-bottom: 1.5em;'>
+											<li><b>My Development Time:</b> October 2014 - April 2015</li>
+											<li><b>Engine:</b> Unity (C#)</li>
+										</ul>
+									</div>
+									<!--<label class='brief'><span class='closed'>Read more</span><span class='open'>Collapse</i></span></label>-->
+								</div>
+							</div>
+						</div>
+					</div>
+					<div id='gamejams'>
+						<h3>Game Jams</h3>
+						<p> Show Reel of Game Jams 1 - 8</p>
+						<iframe id='gamejam' src="https://www.youtube.com/embed/8aMKBDSwkA0?ecver=2" width="640" height="360" frameborder="0" allowfullscreen></iframe>
+
+						<div class='project' id='gj-10'>
+							<h4>Superbman - #10</h4>
+							<div class='preview'>
+								<iframe id="_ytid_65725" width="480" height="270" src="https://youtube.com/embed/Ft-woUyyN-A?wmode=transparent"></iframe>
+							</div>
+							<div class='info'>
+								<div id='content'>
+									<div class='brief'>Superbman is a 2.5D side scrolling platforming game where you have to wall jump to stay alive. Intense and fast paced, timing has to be right if you want to make it to the end.
+										<ul style='list-style: none; padding: 0; margin-bottom: 1.5em;'>
+											<li><b>Tools:</b> Unreal Engine 4 (C++)</li>
+											<li><b>Game Jam:</b> Ludum Dare 39 (Running out of Power)</li>
+											<li><b>Jam Length:</b> 72 Hours</li>
+										</ul>
+									</div>
+									<!--<label class='brief'><span class='closed'>Read more</span><span class='open'>Collapse</i></span></label>-->
+								</div>
+							</div>
+						</div>
+						<div class='project' id='gj-9'>
+							<h4>Final Front: Planetary Defence - #9</h4>
+							<div class='preview'>
+								<iframe id="_ytid_65725" width="480" height="270" src="https://youtube.com/embed/7QYratMiLrA?wmode=transparent"></iframe>
+							</div>
+							<div class='info'>
+								<div id='content'>
+									<div class='brief'>FF:PD is a circular tower defence game where your planet is your base and you place towers on the surface of the planet, and even some abilities such as thrusters to rotate your planet!
+										<ul style='list-style: none; padding: 0; margin-bottom: 1.5em;'>
+											<li><b>Tools:</b> Unity (C#)</li>
+											<li><b>Game Jam:</b> Ludum Dare 38 (Small World)</li>
+											<li><b>Jam Length:</b> 48 Hours</li>
+										</ul>
+									</div>
+									<!--<label class='brief'><span class='closed'>Read more</span><span class='open'>Collapse</i></span></label>-->
+								</div>
+							</div>
+						</div>
+						<div class='project' id='gj-8'>
+							<h4>One Room At A Time - #8</h4>
+							<div class='preview'>
+								<img src='/img/OneRoomAtATime.PNG' width='512' title='One Room At A Time - Preview'/>
+								<!-- <iframe id="_ytid_65725" width="480" height="270" src="https://youtube.com/embed/7QYratMiLrA?wmode=transparent"></iframe> -->
+							</div>
+							<div class='info'>
+								<div id='content'>
+									<div class='brief'>One Room At A Time is a 2D top-down stealth game where you have to get around the level to the end unseen by evading and optionally killing.
+										<ul style='list-style: none; padding: 0; margin-bottom: 1.5em;'>
+											<li><b>Tools:</b> Unity (C#)</li>
+											<li><b>Game Jam:</b> Ludum Dare 37 (One Room)</li>
+											<li><b>Jam Length:</b> 48 Hours</li>
+										</ul>
+									</div>
+									<!--<label class='brief'><span class='closed'>Read more</span><span class='open'>Collapse</i></span></label>-->
+								</div>
+							</div>
+						</div>
+						<div class='project' id='gj-7'>
+							<h4>Blowin’ Round The World - #7</h4>
+							<div class='preview'>
+								<img src='/img/BlowinAroundTheWorld.PNG' width='512' title='Blowin’ Round The World - Preview'/>
+								<!-- <iframe id="_ytid_65725" width="480" height="270" src="https://youtube.com/embed/7QYratMiLrA?wmode=transparent"></iframe> -->
+							</div>
+							<div class='info'>
+								<div id='content'>
+									<div class='brief'>Blowin’ Round The World is a top down 3D shooter. Move and dash your way around the level and use your blow dart to kill the enemies. Endless wave shooter with a couple of enemy types and a mini-boss.
+										<ul style='list-style: none; padding: 0; margin-bottom: 1.5em;'>
+											<li><b>Tools:</b> Unity (C#)</li>
+											<li><b>Game Jam:</b> Ludum Dare 36 (Ancient Technology)</li>
+											<li><b>Jam Length:</b> 48 Hours</li>
+										</ul>
+									</div>
+									<!--<label class='brief'><span class='closed'>Read more</span><span class='open'>Collapse</i></span></label>-->
+								</div>
+							</div>
+						</div>
+						<div class='project' id='gj-6'>
+							<h4>Bang Buggys - #6</h4>
+							<div class='preview'>
+								<img src='/img/Bang Buggys.PNG' width='512' title='Bang Buggys - Preview'/>
+								<!-- <iframe id="_ytid_65725" width="480" height="270" src="https://youtube.com/embed/7QYratMiLrA?wmode=transparent"></iframe> -->
+							</div>
+							<div class='info'>
+								<div id='content'>
+									<div class='brief'>Bang Buggys is a demolition derby game, where you destroy other cars by crashing into them and damaging them or pushing them out of the arena. It supported up to 4 players locally and had the option to toggle bots.
+										<ul style='list-style: none; padding: 0; margin-bottom: 1.5em;'>
+											<li><b>Tools:</b> Unity (C#)</li>
+											<li><b>Game Jam:</b> GameJolt Game Jam (Nuova)</li>
+											<li><b>Jam Length:</b> 48 Hours</li>
+										</ul>
+									</div>
+									<!--<label class='brief'><span class='closed'>Read more</span><span class='open'>Collapse</i></span></label>-->
+								</div>
+							</div>
+						</div>
+						<div class='project' id='gj-5'>
+							<h4>Tomb Player - #5</h4>
+							<div class='preview'>
+								<img src='/img/TombPlayer.PNG' width='512' title='Tomb Player - Preview'/>
+								<!-- <iframe id="_ytid_65725" width="480" height="270" src="https://youtube.com/embed/7QYratMiLrA?wmode=transparent"></iframe> -->
+							</div>
+							<div class='info'>
+								<div id='content'>
+									<div class='brief'>Tomb Player is a two player platforming game where you must work together to progress through the levels.
+										<ul style='list-style: none; padding: 0; margin-bottom: 1.5em;'>
+											<li><b>Tools:</b> Unity (C#)</li>
+											<li><b>Game Jam:</b> Global Game Jam 2016 (Ritual)</li>
+											<li><b>Jam Length:</b> 48 Hours</li>
+										</ul>
+									</div>
+									<!--<label class='brief'><span class='closed'>Read more</span><span class='open'>Collapse</i></span></label>-->
+								</div>
+							</div>
+						</div>
+						<div class='project' id='gj-4'>
+							<h4>Shoot Or Don’t Shoot - #4</h4>
+							<div class='preview'>
+								<img src='/img/ShootOrDontShoot.PNG' width='512' title='Shoot Or Don’t Shoot - Preview'/>
+								<!-- <iframe id="_ytid_65725" width="480" height="270" src="https://youtube.com/embed/7QYratMiLrA?wmode=transparent"></iframe> -->
+							</div>
+							<div class='info'>
+								<div id='content'>
+									<div class='brief'>Shoot or Don't Shoot is a top-down 2D reaction game. You will walk into a dark room and the room will fade in, you will then have to decided who to kill and who to spare.
+										<ul style='list-style: none; padding: 0; margin-bottom: 1.5em;'>
+											<li><b>Tools:</b> Unity (C#)</li>
+											<li><b>Game Jam:</b>Ludum Dare 34 (Two Buttons or Growing)</li>
+											<li><b>Jam Length:</b> 48 Hours</li>
+										</ul>
+									</div>
+									<!--<label class='brief'><span class='closed'>Read more</span><span class='open'>Collapse</i></span></label>-->
+								</div>
+							</div>
+						</div>
+						<div class='project' id='gj-3'>
+							<h4>Neighbourhood Rampage - #3</h4>
+							<div class='preview'>
+								<img src='/img/NeighbourhoodRampage.PNG' width='512' title='Neighbourhood Rampage - Preview'/>
+								<!-- <iframe id="_ytid_65725" width="480" height="270" src="https://youtube.com/embed/7QYratMiLrA?wmode=transparent"></iframe> -->
+							</div>
+							<div class='info'>
+								<div id='content'>
+									<div class='brief'>Neighbourhood Rampage is a virus infecting game where you play as a monster who goes around infecting the town (wave based infecting game).
+										<ul style='list-style: none; padding: 0; margin-bottom: 1.5em;'>
+											<li><b>Tools:</b> Unity (C#)</li>
+											<li><b>Game Jam:</b> Ludum Dare 33 (You Are The Monster)</li>
+											<li><b>Jam Length:</b> 72 Hours</li>
+										</ul>
+									</div>
+									<!--<label class='brief'><span class='closed'>Read more</span><span class='open'>Collapse</i></span></label>-->
+								</div>
+							</div>
+						</div>
+						<div class='project' id='gj-2'>
+							<h4>A Bug’s Death - #2</h4>
+							<div class='preview'>
+								<img src='/img/A Bugs Death.PNG' width='512' title='A Bug’s Death - Preview'/>
+								<!-- <iframe id="_ytid_65725" width="480" height="270" src="https://youtube.com/embed/7QYratMiLrA?wmode=transparent"></iframe> -->
+							</div>
+							<div class='info'>
+								<div id='content'>
+									<div class='brief'>A Bug’s Death is a bug popping game where you have to use your magnifying glass to make alien bugs on the ground explode.
+										<ul style='list-style: none; padding: 0; margin-bottom: 1.5em;'>
+											<li><b>Tools:</b> Unity (C#)</li>
+											<li><b>Game Jam:</b> Ludum Dare 32 (Unconventional Weapon)</li>
+											<li><b>Jam Length:</b> 72 Hours</li>
+										</ul>
+									</div>
+									<!--<label class='brief'><span class='closed'>Read more</span><span class='open'>Collapse</i></span></label>-->
+								</div>
+							</div>
+						</div>
+						<div class='project' id='gj-1'>
+							<h4>Artica - #1</h4>
+							<div class='preview'>
+								<img src='/img/Artica.PNG' width='512' title='Artica - Preview'/>
+								<!-- <iframe id="_ytid_65725" width="480" height="270" src="https://youtube.com/embed/7QYratMiLrA?wmode=transparent"></iframe> -->
+							</div>
+							<div class='info'>
+								<div id='content'>
+									<div class='brief'>Artica is a exploration game set in the antarctic where you play as a fox.
+										<ul style='list-style: none; padding: 0; margin-bottom: 1.5em;'>
+											<li><b>Tools:</b> Unity (C#)</li>
+											<li><b>Game Jam:</b> Uni Game Jam (Frost)</li>
+											<li><b>Jam Length:</b> 48 Hours</li>
+										</ul>
+									</div>
+									<!--<label class='brief'><span class='closed'>Read more</span><span class='open'>Collapse</i></span></label>-->
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section id='resume'>
+				<div id='content'>
+					<h1>Resume</h1>
+					<p> <b>	Experience </b> </p>
+					<p>	-	Antimatter Games – Junior Programmer, October 2015 – September 2017 </p>
+					<p>	-	Antimatter Games – Programming Intern, June – August 2015 (3 months) </p>
+					<p> <b>	Education </b> </p>
+					<p>	-	Falmouth University – BA Digital Games 2:1 (2014 – 2017) </p>
+					<p> <b>	Skills </b> </p>
+					<p> C#, UnrealScript, C++, Unity, Unreal Engine 3, Unreal Engine 4, Perforce, Jira, Visual Studio. </p>
+					<p> <b>LinkedIn:</b> <a href='https://www.linkedin.com/in/callum-coombes-39a41513b/' title='Callum Coombes - LinkedIn'> https://www.linkedin.com/in/callum-coombes-39a41513b/</a></p>
+					<p> <b>Email:</b> <a href='mailto:ccoomzy@hotmail.co.uk' title='Email me!'>ccoomzy@hotmail.co.uk</a></p>
+				</div>
+			</section>
+
+			<footer>
+				<div id='content'>
+					<div id='love'>
+						<a href='http://mattjames.co.nf' target='window'>Made with <i class="fa fa-heart" aria-hidden="true"></i></a>
+					</div>
+					<div id='top'>
+						<a href='#' tooltip='Scroll to top'><i class="fa fa-arrow-up" aria-hidden="true"></i></a>
+					</div>
+				</div>
+			</footer>
+
+		</main>
+  </body>
+</html>

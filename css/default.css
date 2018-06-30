@@ -1,0 +1,402 @@
+@import '../fonts/opensans/stylesheet.css';
+@import '../fonts/fontawesome/stylesheet.css';
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+body {
+  background: #fbfaf5;
+  font-family: 'Open Sans', sans-serif;
+  box-sizing: border-box;
+  font-size: 1.25em;
+  margin: 9em 0 0 ;
+}
+h1, h2, h3, h4, h5{
+  font-weight: 200;
+}
+h1 {
+  font-size: 2.25em;
+}
+h2 {
+  font-size: 2em;
+}
+h3 {
+  font-size: 1.75em;
+}
+h4 {
+  font-size: 1.5em;
+  font-weight: 400;
+}
+a:link, a:hover, a:visited, a:active{
+  color:#0081f0;
+  transition: all 200ms ease-in-out;
+  text-decoration: none;
+}
+a:hover {
+  color: #69dae6;
+}
+body > main > section a:visited {
+  color: #022544;
+}
+body > main {
+  padding: 0 1em;
+  box-sizing: border-box;
+  height: 100%;
+  position: relative;
+  margin: 9em 0 0;
+}
+body > main > header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  background: #143654;
+  text-align: center;
+  color: white;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  z-index: 1;
+}
+body > main > header > h1 {
+  margin: 0.5em 0 .15em;
+}
+body > main > header > menu {
+  display: none;
+}
+body > main > header > menu li ul,
+body > main > header > menu li ul li {
+  display:none; 
+}
+body > main > header > input#menu[name='menu'] {
+  display: none;
+  padding: 0;
+  box-sizing: border-box;
+}
+body > main > header > label#menu[for='menu'] {
+  width: 100%;
+  display: block;
+  padding: 1em 0 2em;
+}
+body > main > header > menu::before {
+  content: 'Menu';
+  padding: .5em 1em;
+}
+body > main > header > menu > li {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  position: relative;
+}
+body > main > header > .role {
+  max-height: 0px;
+  overflow: hidden;
+}
+body > main > header > label#menu[for='menu'] span.closed,
+body > main > header > menu > li > a {
+  padding: .5em 1.2em;
+  margin: 0em .5em;
+  background: #022544; /*#2d5a82;*/
+  box-shadow: inset 0 0 0.05em black;
+  border-radius: .25em;
+}
+body > main > header > main > li > a:active {
+  transform: scale(0.75);
+}
+body > main > header > input#menu[name='menu']:checked ~ label#menu[for='menu'] {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 100;
+  text-align: right;
+  padding: .5em 1em;
+  box-sizing: border-box;
+}
+body > main > header > label#menu[for='menu'] span.open {
+  display: none;
+}
+body > main > header > input#menu[name='menu']:checked ~ label#menu[for='menu'] span.open {
+  display: block;
+  font-size: 2em;
+}
+body > main > header > input#menu[name='menu']:checked ~ label#menu[for='menu'] span.closed {
+  display: none;
+}
+body > main > header > input#menu[name='menu']:checked ~ menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  display: block;
+  pointer-events: all;
+  background: #143654;
+  font-size: 1.25em;
+  padding: 0;
+}
+body > main > header > input#menu[name='menu']:checked ~ menu:before {
+  display: block;
+  margin: 2em 0;
+  font-size: 2em;
+}
+body > main > header > input#menu[name='menu']:checked ~ menu li a {
+  display: block;
+  margin: 1em;
+}
+body > main > section {
+  width: 100%;
+  min-height:100%;
+  height: auto;
+  margin: auto;
+  box-sizing: border-box;
+  max-width: 1200px;
+  border-bottom: dotted 0.05em #607d8b;
+  overflow:overlay;
+}
+body > main > section #content {
+  margin: auto;
+  /*overflow: overlay;*/
+}
+li a:link {
+  overflow-wrap: break-word;
+}
+footer {
+  background: #022544;
+  color: #c3c3c3;
+  width: calc(100% + 2em);
+  margin: 0 0 0 -1em;
+  box-sizing: border-box;
+  padding: 1.5em;
+  text-align: center;
+  position: relative;
+}
+footer > #content {
+  overflow: overlay;
+}
+footer > #content > div#love {
+  float: left;
+}
+footer > #content > div#top {
+  float: right;
+}
+footer a:link, footer a:visited, footer a:hover, footer a:active {
+  color: #c3c3c3;
+}
+footer .fa.fa-arrow-up {
+  border-radius: 0.25em;
+  background: rgba(255,255,255,.5);
+  padding: 0.2em;
+  color: #022544;
+  margin: 0 0 0 .25em;
+}
+footer .fa.fa-heart {
+  color: #da1f51;
+}
+#projects h3 {
+  color: #868686;
+  margin: 0;
+}
+.project h4 {
+  color: #0081f0;
+  margin: 0;
+}
+.project { min-height: 270px; padding: 1.5em 0;}
+.project #content label.brief {
+  color: #0081f0;
+  font-weight: 400;
+  text-align: right;
+  display: block;
+  padding: .25em 0 2em;
+}
+.project #content label.brief span {
+  cursor: pointer;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.project .preview {
+  padding: .25em 0;
+  width: 100%;
+}
+.project .preview iframe {
+  border: none;
+  min-height: 550px;
+  width: 100%;
+  overflow: hidden;
+}
+.project .preview img {
+  width: 100%;
+}
+.project #content:not(.expanded) p,
+.project #content:not(.expanded) label.brief .open {
+  display: none;
+}
+.project #content.expanded label.brief .closed {
+  display: none;
+}
+.project p.brief{
+  display: block !important;
+}
+#gamejam {
+  border: none;
+  height: 550px;
+  width: 100%;
+}
+
+
+@media screen and (min-width: 1000px) {
+  .project .preview {
+    float: right;
+    padding: 0 1em .5em;
+    width: auto;
+    margin-top: -1.55em;
+  }
+  .project .preview img {
+    width: 512px;
+  }
+  body > main > header > .role {
+    max-height: 2em;
+  }
+  .project #content:not(.expanded) p:first-child.brief {
+    min-height: 270px;
+  }
+  .project .preview iframe {
+    border: solid 0.15em #000000;
+    border-radius: 0.5em;
+    overflow: hidden;
+    box-shadow: 0 0 .75em black;
+    padding: 0.2em;
+    background: black;
+    width: 480px;
+    height: 270px;
+    min-height: auto;
+  }
+  #gamejam {  
+    position: relative !important;
+    left: auto !important;
+    min-height: 550px;
+    height:auto;
+    width: 978px;
+    display: block;
+    margin: auto;
+    border-radius: .25em;
+  }
+  body > main > header > label#menu[for='menu'] {
+    display: none;
+  }
+  body > main > header > input#menu[name='menu']:checked ~ menu:before {
+    font-size: 1em;
+    display: inline-block;
+    margin: 0;
+  }
+  body > main > header > input#menu[name='menu']:checked ~ menu, 
+  body > main > header > menu {
+    padding: .5em;
+    margin: .5em;
+    position: relative;
+    top: initial;
+    left: initial;
+    right: initial;
+    bottom: initial;
+    width: initial;
+    height: initial;
+    font-size: 1em;
+    display: inline-block;
+    vertical-align: middle;
+  }
+  body > main > header > menu li ul {
+    position: absolute;
+    padding: 0;
+    list-style: none;
+    text-align: left;
+    background: #012544;
+    color: white;
+    margin: 0 0.5em;
+    box-sizing: border-box;
+  }
+   body > main > header > menu li ul > li ul{
+    position: absolute;
+    padding: 0;
+    left: 100%;
+    top: 0;
+    min-height: 100%;
+    list-style: none;
+    text-align: left;
+    background: #012544;
+    color: white;
+    margin: 0 0.5em;
+    box-sizing: border-box;
+  }
+  body > main > header > menu li:hover > ul {
+    display: block;
+  }
+  body > main > header > menu li:hover > ul > li:hover ul{
+    display: block;
+    margin: 0;
+    border-left: 1px solid rgba(0,0,0,0.25);
+  }
+  body > main > header > menu li ul > li,
+  body > main > header > menu li ul > li > a {
+    display: inline-block;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  body main header menu li ul li ul li {
+    display: block;
+  }
+  body > main > header > menu li ul > li a {
+    padding: 1.5em 1.2em;
+    font-size: 0.75em;
+  }
+   body > main > header > menu li:hover > ul > li {
+    white-space: nowrap;
+   }
+
+  body > main > header > menu > li {
+    display: inline-block;
+  }
+  body > main > header > menu > li > a {
+    display: inline-block;
+    vertical-align: middle;
+  }
+}
+@media screen and (min-width: 1200px) {
+  body > main > section {
+    width: 75%;
+  }
+}
+@media screen and (min-width: 2000px) {
+  body {
+    font-size: 1.5em;
+  }
+  body > main > section {
+    max-width: 1600px;
+  }
+}
+@media (-webkit-min-device-pixel-ratio: 2){
+  body {
+    font-size: 2.5em;
+  }
+}
+@media (-webkit-min-device-pixel-ratio: 2) and (min-device-width: 420px){
+  body {
+    font-size: 1.5em;
+  }
+}
+@media (-webkit-min-device-pixel-ratio: 2) and (min-device-width: 550px){
+  body {
+    font-size: 1.15em;
+  }
+}
