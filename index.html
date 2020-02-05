@@ -106,11 +106,11 @@
 
 			<header>
 				<h1>Callum Coombes</h1>
-				<div class='role'>Programmer</div>
+				<div class='role'>Game Programmer</div>
 				<input type='checkbox' name='menu' id='menu'/>
 				<label id='menu' for='menu'><span class='closed'>Menu</span><span class='open'><i class="fa fa-times" aria-hidden="true"></i></span></label>
 				<menu>
-<!--					<li><a href='/#about'>About Me</a></li> -->
+					<!-- <li><a href='/#about'>About Me</a></li> -->
 					<li>
 						<a href='/#projects'>Projects</a>
 						<ul>
@@ -118,6 +118,21 @@
 								<a href='/#professional'>Professional</a>
 								<ul>
 									<li><a href='/#risingstorm2'>Rising Storm 2: Vietnam</a></li>
+									<li><a href='/#bae-systems'>BAE Systems</a></li>
+								</ul>
+							</li>
+							<li>
+								<a href='/#mods'>Mods</a>
+								<ul>
+									<li>
+										<a href='/#pavlov'>Pavlov</a>
+										<ul>
+											<li><a href='/#pavlov-pmf'>PMF</a></li>
+											<li><a href='/#pavlov-haloinfection'>Halo Infection</a></li>
+											<li><a href='/#pavlov-rush'>Rush</a></li>
+											<li><a href='/#pavlov-halotournament'>Halo Tournament</a></li>
+										</ul>
+									</li>
 								</ul>
 							</li>
 							<li>
@@ -186,6 +201,93 @@
 										<li><b>Link:</b> <a href='http://store.steampowered.com/app/418460/Rising_Storm_2_Vietnam/' title='Rising Storm 2: Vietnam on the Steam Store'>http://store.steampowered.com/app/418460/Rising_Storm_2_Vietnam/</a></li>
 									</ul>
 									<!--<label class='brief'><span class='closed'>Read more</span><span class='open'>Collapse</i></span></label>-->
+								</div>
+							</div>
+						</div>
+						<div class='project' id='bae-systems'>
+							<h4>BAE Systems</h4>
+							<div class='preview'>
+								<iframe id="_ytid_62755" width="480" height="270" src="https://www.youtube.com/embed/mhZKfXUqldM?wmode=transparent"></iframe>
+							</div>
+							<div class='info'>
+								<div id='content' class='expanded'>
+									<p class='brief'>BAE Systems is a British multinational defence, security, and aerospace company. The company is the largest defence contractor in Europe. Since joining BAE Systems, I have worked on the CAGE project.</p>
+									<p>CAGE is a mission planning and mission support product for aircraft and land vehicles that allows users to accurately plan, brief, rehearse, execute and debrief missions from single sortie through to full force operations.</p>
+									<ul style='list-style: none; padding: 0; margin-bottom: 1.5em;'>
+										<li><b>My Development Time:</b> November 2019 - Present</li>
+										<li><b>Link:</b> <a href='https://www.baesystems.com/' title='BAE Systems Website' target='_blank'>https://www.baesystems.com/</a></li>
+									</ul>
+									<!--<label class='brief'><span class='closed'>Read more</span><span class='open'>Collapse</i></span></label>-->
+								</div>
+							</div>
+						</div>
+					</div>
+					<h1 id='mods'>Mods</h1>
+					<div id='pavlov'>
+						<h2>Pavlov Modding</h2>
+						<div class='project' id='pavlov-pmf'>
+							<h4>Pavlov Modding Framework (PMF)</h4>
+							<div class='preview'>
+								<img src='/img/pavlov-logo.jpg' width='512' title='Pavlov Logo'/>
+							</div>
+							<div class='info'>
+								<div id='content'>
+									<p class='brief'>I created a framework for Pavlov VR, called Pavlov Modding Framework (PMF), built entirely in the Blueprints in Unreal Engine 4. As there’s no source code available for Pavlov, my framework provides developers with a gameplay structure for custom game modes that acts as a gateway between itself and Pavlov/Unreal Engine structure. This allows for a powerful but flexible way of working. Functionality such as Player Controller/Player State hybrid for managing player logic, a Player Character Proxy for handling any character functionality, game flow and match handlers, event helpers (e.g. registering kills) and more.</p>
+									<ul style='list-style: none; padding: 0; margin-bottom: 1.5em;'>
+										<li><b>My Development Time:</b> October 2019 - Present</li>
+										<li><b>Engine:</b> Unreal Engine 4 (Blueprints)</li>
+										<li><b>Link:</b> <a href='https://github.com/Coomzy/Pavlov-PMF/' title='Go to PMF GitHub repository'>https://github.com/Coomzy/Pavlov-PMF/</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class='project' id='pavlov-haloinfection'>
+							<h4>Halo Infection</h4>
+							<div class='preview'>
+								<iframe id="_ytid_65779" width="480" height="270" src="https://www.youtube.com/embed/Rt1nX_HHQRo?wmode=transparent"></iframe>
+							</div>
+							<div class='info'>
+								<div id='content'>
+									<p class='brief'>Halo Infection is a Halo 3 style infection game mode where it's humans vs zombies, when a human dies they become zombies. Humans must utilize teamwork and co-ordination to survive.</p>
+									<p>In the 'Classic' variant, zombies are super-fast, super-weak and have low gravity, but their energy sword can kill humans in one fatal blow. Zombies can also jump with the off-hand trigger and lunge with dominant hand trigger (whilst off the ground).</p>
+									<p>Humans start with a default loadout and can earn cash by killing zombies and use the buy menu to get more weapons.<p>Infection (INF) is built as an additional framework layer on top of PMF, allowing for easy game mode expansion and customisation, whilst staying true to its origins.</p>
+									<ul style='list-style: none; padding: 0; margin-bottom: 1.5em;'>
+										<li><b>My Development Time:</b> November 2019 - January 2020</li>
+										<li><b>Engine:</b> Unreal Engine 4 (Blueprints)</li>
+										<li><b>Link:</b> <a href='https://steamcommunity.com/sharedfiles/filedetails/?id=1908549791' title='Play/Download/View Halo Infection on Steam'>https://steamcommunity.com/sharedfiles/filedetails/?id=1908549791</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class='project' id='pavlov-rush'>
+							<h4>Rush</h4>
+							<div class='preview'>
+								<iframe id="_ytid_65788" width="480" height="270" src="https://www.youtube.com/embed/FwV0I0lksWsm?wmode=transparent"></iframe>
+							</div>
+							<div class='info'>
+								<div id='content'>
+									<p class='brief'>Rush is a recreation of the Battlefield Bad Company 2 Rush game mode for Pavlov VR. The core game mode is Attackers vs Defenders. Attackers have limited respawn tickets as a team and both sides pick a role to play as Soldier, Sniper, Support, and Commando. Defenders have to try and defend objectives until the Attackers have run out of respawn tickets. Attackers have to try and destroy all sets of objectives. Objectives are destroyed by planting a bomb and giving the defenders a chance to disarm them before detonation. A level designer can set the amount of objectives active at one time.</p>
+									<ul style='list-style: none; padding: 0; margin-bottom: 1.5em;'>
+										<li><b>My Development Time:</b> November 2019 - February 2020</li>
+										<li><b>Engine:</b> Unreal Engine 4 (Blueprints)</li>
+										<li><b>Link:</b> <a href='https://steamcommunity.com/sharedfiles/filedetails/?id=1987939496' title='Play/Download/View Rush on Steam'>https://steamcommunity.com/sharedfiles/filedetails/?id=1987939496</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class='project' id='pavlov-halotournament'>
+							<h4>Halo Tournament</h4>
+							<div class='preview'>
+								<iframe id="_ytid_65779" width="480" height="270" src="https://www.youtube.com/embed/Dpkf8oIJq_A?wmode=transparent"></iframe>
+							</div>
+							<div class='info'>
+								<div id='content'>
+									<p class='brief'>Halo Tournament is a recreation of older project <a href='/#battle-arena'>Battle Arena</a> to ‘test the waters’ of Pavlov VR modding and the creation of PMF. It has the exact same premise of consecutive 1v1s and was picked because of its simplicity, which allowed me to focus on learning how to effectively mod in Pavlov VR. Very shortly after, I decided to implement a core framework to make it easier for myself and others to create Pavlov mods easier.</p>
+									<ul style='list-style: none; padding: 0; margin-bottom: 1.5em;'>
+										<li><b>My Development Time:</b> October 2019 - November 2019</li>
+										<li><b>Engine:</b> Unreal Engine 4 (Blueprints)</li>
+										<li><b>Link:</b> <a href='https://steamcommunity.com/sharedfiles/filedetails/?id=1880424187' title='Play/Download/View Halo Tournament on Steam'>https://steamcommunity.com/sharedfiles/filedetails/?id=1880424187</a></li>
+									</ul>
 								</div>
 							</div>
 						</div>
